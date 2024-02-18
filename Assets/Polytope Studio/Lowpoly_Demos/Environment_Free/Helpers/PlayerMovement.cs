@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController controller;
+    private PlayerInput _pl;
+    private Animator _animator;
+    private CharacterController _characterController;
 
-    public float speed = 5;
+    public float speed = 5f;
     public float gravity = -9.18f;
     public float jumpHeight = 3f;
 
@@ -14,40 +17,48 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
-    Vector3 velocity;
-    bool isGrounded;
+    private Vector3 velocity;
+    private bool isGrounded;
+
+    void Awake()
+    {
+        _pl = GetComponent<PlayerInput>();
+        _animator = GetComponent<Animator>();
+        _characterController = GetComponent<CharacterController>();
+
+        if (_animator == null)
+        {
+            Debug.LogError("Animator component not found on the GameObject.");
+        }
+    }
+
+    void Start()
+    {
+        _pl.actions["Dance"].performed += ctx => Dance();
+    }
+
+    // Update is called once per frame
     void Update()
     {
+        Vector2 movementInput = _pl.actions["Move"].ReadValue<Vector2>();
+        float x = movementInput.x;
+        float z = movementInput.y;
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }
-
-        if (Input.GetKey("left shift") && isGrounded)
-        {
-            speed = 10;
-        }
-        else
-        {
-            speed = 5;
-        }
-
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
         Vector3 move = transform.right * x + transform.forward * z;
-
-        controller.Move(move * speed * Time.deltaTime);
-
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
+        _characterController.Move(move * speed * Time.deltaTime);
 
         velocity.y += gravity * Time.deltaTime;
+        _characterController.Move(velocity * Time.deltaTime);
 
-        controller.Move(velocity * Time.deltaTime);
+    }
+
+    void Dance()
+    {
+        if (_animator != null)
+        {
+            _animator.SetTrigger("dance");
+        }
     }
 }
