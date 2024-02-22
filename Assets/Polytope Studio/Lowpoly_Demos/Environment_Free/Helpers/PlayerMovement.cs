@@ -20,6 +20,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
 
+    // Add boolean parameters for animation control
+    private bool isDead;
+    private bool isRunning;
+    private bool isJumping;
+    private bool isWalking;
+
     void Awake()
     {
         _pl = GetComponent<PlayerInput>();
@@ -37,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
         _pl.actions["Dance"].performed += ctx => Dance();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector2 movementInput = _pl.actions["Move"].ReadValue<Vector2>();
@@ -52,6 +57,19 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         _characterController.Move(velocity * Time.deltaTime);
 
+        //// Update boolean parameters based on conditions
+        //isRunning = (x != 0 || z != 0) && isGrounded;
+        //isWalking = (x != 0 || z != 0) && !isRunning && isGrounded;
+        ////isJumping = !isGrounded;
+
+        //// Set boolean parameters in the animator
+        //if (_animator != null)
+        //{
+        //    _animator.SetBool("IsDead", isDead);
+        //    _animator.SetBool("IsRunning", isRunning);
+        //    //_animator.SetBool("IsJumping", isJumping);
+        //    _animator.SetBool("IsWalking", isWalking);
+        //}
     }
 
     void Dance()
