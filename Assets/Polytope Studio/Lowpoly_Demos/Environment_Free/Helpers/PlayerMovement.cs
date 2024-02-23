@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator _animator;
     private CharacterController _characterController;
 
-    public float speed = 5f;
+    public float speed = 3f;
     public float gravity = -9.18f;
     public float jumpHeight = 3f;
 
@@ -22,14 +22,14 @@ public class PlayerMovement : MonoBehaviour
 
     // Add boolean parameters for animation control
     private bool isDead;
-    private bool isRunning;
+    private bool isWalk;
     private bool isJumping;
-    private bool isWalking;
+    private bool isRun;
 
     void Awake()
     {
         _pl = GetComponent<PlayerInput>();
-        _animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
         _characterController = GetComponent<CharacterController>();
 
         if (_animator == null)
@@ -40,7 +40,34 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        // Suscribe al evento "Move" para activar IsRunning
+        _pl.actions["Move"].performed += ctx => OnMovePerformed(ctx);
+        _pl.actions["Move"].canceled += ctx => OnMoveCanceled(ctx);
         _pl.actions["Dance"].performed += ctx => Dance();
+
+    }
+
+    void OnMovePerformed(InputAction.CallbackContext context)
+    {
+        // Actualiza booleanos según las condiciones
+        isWalk = true;
+
+        // Establece booleanos en el animator
+        if (_animator != null)
+        {
+            _animator.SetBool("IsWalking", isWalk);
+        }
+    }
+    void OnMoveCanceled(InputAction.CallbackContext context)
+    {
+        // Cuando se deja de pulsar, establece IsWalking en false
+        isWalk = false;
+
+        // Establece booleanos en el animator
+        if (_animator != null)
+        {
+            _animator.SetBool("IsWalking", isWalk);
+        }
     }
 
     void Update()
@@ -70,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
         //    //_animator.SetBool("IsJumping", isJumping);
         //    _animator.SetBool("IsWalking", isWalking);
         //}
+
     }
 
     void Dance()

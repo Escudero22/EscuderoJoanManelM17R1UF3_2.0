@@ -802,7 +802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 365747725705917856, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.18
+      value: -1.075
       objectReference: {fileID: 0}
     - target: {fileID: 365747725705917856, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_LocalPosition.z
@@ -822,7 +822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1626912358402766300, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.3
+      value: 4.159
       objectReference: {fileID: 0}
     - target: {fileID: 1626912358402766300, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_LocalPosition.z
@@ -866,43 +866,43 @@ PrefabInstance:
       objectReference: {fileID: 1143006926}
     - target: {fileID: 3893354878492545600, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.18
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3893354878492545600, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.13
+      value: 0.55999994
       objectReference: {fileID: 0}
     - target: {fileID: 3893354878492545600, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.8
+      value: -1.88
       objectReference: {fileID: 0}
     - target: {fileID: 3893354878492545600, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.99513406
+      value: -0.98857814
       objectReference: {fileID: 0}
     - target: {fileID: 3893354878492545600, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.077375926
+      value: -0.14925097
       objectReference: {fileID: 0}
     - target: {fileID: 3893354878492545600, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.055885825
+      value: 0.020797642
       objectReference: {fileID: 0}
     - target: {fileID: 3893354878492545600, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.024454374
+      value: 0.0022094774
       objectReference: {fileID: 0}
     - target: {fileID: 3893354878492545600, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 9.017
+      value: 17.158
       objectReference: {fileID: 0}
     - target: {fileID: 3893354878492545600, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 366.245
+      value: 357.494
       objectReference: {fileID: 0}
     - target: {fileID: 3893354878492545600, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -2.322
+      value: -0.634
       objectReference: {fileID: 0}
     - target: {fileID: 4115313351582338435, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_Enabled
@@ -911,6 +911,10 @@ PrefabInstance:
     - target: {fileID: 6885996082944103600, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.747
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885996082944103600, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 6885996082944103600, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
       propertyPath: m_LocalPosition.z
@@ -922,6 +926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1260657883498003261, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
+    - {fileID: 6721172833707979649, guid: 36a8437a307b54a47bcb5ea3dd5aa1be, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
