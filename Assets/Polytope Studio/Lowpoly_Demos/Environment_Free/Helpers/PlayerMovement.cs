@@ -37,13 +37,14 @@ public class PlayerMovement : MonoBehaviour
             Debug.LogError("Animator component not found on the GameObject.");
         }
     }
-
+    //Cambiar Jump a Trigger.
     void Start()
     {
         // Suscribe al evento "Move" para activar IsRunning
         _pl.actions["Move"].performed += ctx => OnMovePerformed(ctx);
         _pl.actions["Move"].canceled += ctx => OnMoveCanceled(ctx);
         _pl.actions["Dance"].performed += ctx => Dance();
+        _pl.actions["Jump"].performed += ctx => Jump(ctx);
 
     }
 
@@ -67,6 +68,13 @@ public class PlayerMovement : MonoBehaviour
         if (_animator != null)
         {
             _animator.SetBool("IsWalking", isWalk);
+        }
+    }
+    void Jump(InputAction.CallbackContext context)
+    {
+        if (_animator != null)
+        {
+            _animator.SetTrigger("IsJumping");
         }
     }
 
