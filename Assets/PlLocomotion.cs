@@ -32,7 +32,7 @@ public class PlLocomotion : MonoBehaviour
         moveDir = moveDir * speed;
 
         Vector3 moveVelocity = moveDir;
-        plRigidBody.velocity = moveVelocity;
+        plRigidBody.velocity = moveVelocity + Vector3.up * plRigidBody.velocity.y;
     }
 
     private void Rotation()
