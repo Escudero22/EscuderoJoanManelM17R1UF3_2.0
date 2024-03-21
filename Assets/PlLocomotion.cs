@@ -8,6 +8,8 @@ public class PlLocomotion : MonoBehaviour
     Vector3 moveDir;
     Transform cameraObject;
     Rigidbody plRigidBody;
+    private Animator _animator;
+
 
     public float speed = 8;
     public float rotationSpeed = 10;
@@ -16,6 +18,8 @@ public class PlLocomotion : MonoBehaviour
         inputManager = GetComponent<PlayerMovement>();
         plRigidBody = GetComponent<Rigidbody>();
         cameraObject = Camera.main.transform;
+        _animator = GetComponentInChildren<Animator>();
+
     }
 
     public void AllMovement()
@@ -37,19 +41,25 @@ public class PlLocomotion : MonoBehaviour
 
     private void Rotation()
     {
-        Vector3 targetDir = Vector3.zero;
+        if (!_animator.GetBool("IsDancing"))
+        {
+            transform.rotation = Quaternion.Euler(0f, cameraObject.eulerAngles.y, 0f);
+        }
 
-        targetDir = cameraObject.forward * inputManager.verticalI;
-        targetDir = targetDir + cameraObject.right * inputManager.horizontalI;
-        targetDir.Normalize();
-        targetDir.y = 0;
 
-        if(targetDir == Vector3.zero)
-            targetDir = transform.forward;
+        //Vector3 targetDir = Vector3.zero;
 
-        Quaternion targetRotation = Quaternion.LookRotation(targetDir);
-        Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        //targetDir = cameraObject.forward * inputManager.verticalI;
+        //targetDir = targetDir + cameraObject.right * inputManager.horizontalI;
+        //targetDir.Normalize();
+        //targetDir.y = 0;
 
-        transform.rotation = playerRotation;
+        //if(targetDir == Vector3.zero)
+        //    targetDir = transform.forward;
+
+        //Quaternion targetRotation = Quaternion.LookRotation(targetDir);
+        //Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        //transform.rotation = playerRotation;
     }
 }
