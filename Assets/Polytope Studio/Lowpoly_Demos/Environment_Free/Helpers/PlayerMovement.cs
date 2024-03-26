@@ -6,9 +6,18 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     Map map;
+    AnimarionManager animationManager;
+
     public Vector2 movementInput;
+    private float moveA;
+
     public float verticalI;
     public float horizontalI;
+
+    private void Awake()
+    {
+        animationManager = GetComponent<AnimarionManager>();
+    }
     private void OnEnable()
     {
         if (map == null)
@@ -39,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
     {
         verticalI = movementInput.y;
         horizontalI = movementInput.x;
+        moveA = Mathf.Clamp01(Mathf.Abs(horizontalI) + Mathf.Abs(verticalI));
+        animationManager.UpdateAnimatorValues(0, moveA);
     }
 }
 

@@ -11,7 +11,7 @@ public class PlLocomotion : MonoBehaviour
     private Animator _animator;
 
 
-    public float speed = 8;
+    public float speed = 12;
     public float rotationSpeed = 10;
     private void Awake()
     {
