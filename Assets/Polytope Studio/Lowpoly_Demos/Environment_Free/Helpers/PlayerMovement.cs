@@ -6,17 +6,21 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     Map map;
+    PlLocomotion playerLocomotion;
     AnimarionManager animationManager;
 
     public Vector2 movementInput;
-    private float moveA;
+    public float moveA;
 
     public float verticalI;
     public float horizontalI;
 
+    public bool b_input;
+    public bool c_input;
     private void Awake()
     {
         animationManager = GetComponent<AnimarionManager>();
+        playerLocomotion = GetComponent<PlLocomotion>();
     }
     private void OnEnable()
     {
@@ -24,6 +28,12 @@ public class PlayerMovement : MonoBehaviour
         {
             map = new Map();
             map.Exploration.Move.performed += OnMovePerformed;
+
+            map.PlayerActions.B.performed += i => b_input = true;
+            map.PlayerActions.C.performed += i => c_input = true;
+            map.PlayerActions.B.canceled += i => b_input = false;
+            map.PlayerActions.C.canceled += i => c_input = false;
+
         }
         map.Enable();
     }
@@ -41,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
     public void HandleAllInputs()
     {
         MovementInput();
+        SprintingInput();
+        CroachingInput();
         //JumpingAction
         //ActionInputAction
     }
@@ -49,7 +61,32 @@ public class PlayerMovement : MonoBehaviour
         verticalI = movementInput.y;
         horizontalI = movementInput.x;
         moveA = Mathf.Clamp01(Mathf.Abs(horizontalI) + Mathf.Abs(verticalI));
-        animationManager.UpdateAnimatorValues(0, moveA);
+        animationManager.UpdateAnimatorValues(0, moveA, playerLocomotion.isSprinting , playerLocomotion.isCroaching);
+    }
+    private void SprintingInput()
+    {
+        if (b_input && moveA > 0.5f)
+        {
+            playerLocomotion.isSprinting = true;
+        }
+        else
+        {
+            playerLocomotion.isSprinting = false;
+        }
+    }
+    private void CroachingInput()
+    {
+        if (c_input)
+        {
+            Debug.Log("funciona");
+            playerLocomotion.isCroaching = true;
+        }
+        else
+        {
+            Debug.Log("no");
+
+            playerLocomotion.isCroaching = false;
+        }
     }
 }
 

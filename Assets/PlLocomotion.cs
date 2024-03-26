@@ -10,8 +10,11 @@ public class PlLocomotion : MonoBehaviour
     Rigidbody plRigidBody;
     private Animator _animator;
 
-
-    public float speed = 13;
+    public bool isSprinting;
+    public bool isCroaching;
+    public float walkinSpeed = 3.5f;
+    public float speed = 5;
+    public float sprintSpeed = 7.5f;
     public float rotationSpeed = 10;
     private void Awake()
     {
@@ -33,7 +36,26 @@ public class PlLocomotion : MonoBehaviour
         moveDir = moveDir + cameraObject.right * inputManager.horizontalI;
         moveDir.Normalize();
         moveDir.y = 0;
-        moveDir = moveDir * speed;
+
+        if (isSprinting)
+        {
+            Debug.Log(inputManager.moveA);
+            moveDir = moveDir * sprintSpeed;
+
+        }
+        else if (isCroaching)
+        {
+
+            Debug.Log(inputManager.moveA);
+            moveDir = moveDir * speed;
+
+        }
+        else
+        {
+            moveDir = moveDir * walkinSpeed;
+        }
+
+
 
         Vector3 moveVelocity = moveDir;
         plRigidBody.velocity = moveVelocity + Vector3.up * plRigidBody.velocity.y;

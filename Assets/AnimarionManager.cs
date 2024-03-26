@@ -14,7 +14,7 @@ public class AnimarionManager : MonoBehaviour
         horizontal = Animator.StringToHash("Horizontal");
         vertical = Animator.StringToHash("Vertical");
     }
-    public void UpdateAnimatorValues(float horizontalM, float verticalM)
+    public void UpdateAnimatorValues(float horizontalM, float verticalM,bool isSprinting,bool isCroaching)
     {
         float snappedHorizontal;
         float snappedVertical;
@@ -67,8 +67,20 @@ public class AnimarionManager : MonoBehaviour
 
         #endregion
 
+        if (isSprinting)
+        {
+            snappedHorizontal = horizontalM;
+            snappedVertical = 2;
+            Debug.Log("sprint");
+        }
+        if (isCroaching)
+        {
+            snappedHorizontal = horizontalM;
+            snappedVertical = -1f;
+            Debug.Log("croach");
+        }
 
-        animator.SetFloat(horizontal, horizontalM, 0.1f, Time.deltaTime);
-        animator.SetFloat(vertical, verticalM, 0.1f, Time.deltaTime);
+        animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
+        animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
     }
 }
