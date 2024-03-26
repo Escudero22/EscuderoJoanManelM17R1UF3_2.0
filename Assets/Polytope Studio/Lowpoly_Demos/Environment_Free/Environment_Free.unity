@@ -673,7 +673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eab6fc55c819e0442872655f057c94fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 13
   rotationSpeed: 7
 --- !u!1 &894822542
 GameObject:
@@ -2630,11 +2630,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7235177964658874177, guid: de6f2bb8dbbe696498e14644964a490a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.146755
+      value: 0.14675497
       objectReference: {fileID: 0}
     - target: {fileID: 7235177964658874177, guid: de6f2bb8dbbe696498e14644964a490a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.016884858
+      value: -0.016884854
       objectReference: {fileID: 0}
     - target: {fileID: 7852150233564448557, guid: de6f2bb8dbbe696498e14644964a490a, type: 3}
       propertyPath: m_XAxis.Value
