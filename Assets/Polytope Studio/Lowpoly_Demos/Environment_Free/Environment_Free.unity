@@ -2900,19 +2900,87 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3010662277963164212, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.146755
+      value: 0.14675497
       objectReference: {fileID: 0}
     - target: {fileID: 3010662277963164212, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.016884858
+      value: -0.016884854
       objectReference: {fileID: 0}
     - target: {fileID: 4620158852439053035, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_ParentHash.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
       propertyPath: m_ChildCameras.Array.size
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_Instructions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_ParentHash.Array.data[0].m_Hash
+      value: -1660439827
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_ParentHash.Array.data[1].m_Hash
+      value: -1925082662
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_ParentHash.Array.data[2].m_Hash
+      value: 1671438910
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_ParentHash.Array.data[3].m_Hash
+      value: -1899209660
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_ParentHash.Array.data[4].m_Hash
+      value: -768637602
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_ParentHash.Array.data[5].m_Hash
+      value: -1269438207
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_ParentHash.Array.data[6].m_Hash
+      value: -852923072
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_ParentHash.Array.data[7].m_Hash
+      value: 996082681
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_ParentHash.Array.data[8].m_Hash
+      value: -1644359757
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_ParentHash.Array.data[9].m_Hash
+      value: -376655139
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_Instructions.Array.data[1].m_FullHash
+      value: -1269438207
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_ParentHash.Array.data[6].m_ParentHash
+      value: -1269438207
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_ParentHash.Array.data[7].m_ParentHash
+      value: -1269438207
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_ParentHash.Array.data[8].m_ParentHash
+      value: -1269438207
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698012109450975863, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
+      propertyPath: m_ParentHash.Array.data[9].m_ParentHash
+      value: -1269438207
       objectReference: {fileID: 0}
     - target: {fileID: 6874737903356799867, guid: c545736a45c3fde4d967137c77fdb63d, type: 3}
       propertyPath: speed
