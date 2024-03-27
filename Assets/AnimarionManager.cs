@@ -14,6 +14,13 @@ public class AnimarionManager : MonoBehaviour
         horizontal = Animator.StringToHash("Horizontal");
         vertical = Animator.StringToHash("Vertical");
     }
+
+    public void PlayTargetAnimation(string targetAnimation, bool isInteract)
+    {
+        animator.SetBool("isInteracting", isInteract);
+        animator.CrossFade(targetAnimation, 0.2f);
+    }
+
     public void UpdateAnimatorValues(float horizontalM, float verticalM,bool isSprinting,bool isCroaching)
     {
         float snappedHorizontal;

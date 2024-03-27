@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    Animator animator;
     PlayerMovement inputManager;
     PlLocomotion plLocomotion;
 
+    public bool isInteract;
+
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         inputManager = GetComponent<PlayerMovement>();
         plLocomotion = GetComponent<PlLocomotion>();
     }
@@ -19,5 +23,9 @@ public class PlayerManager : MonoBehaviour
     private void FixedUpdate()
     {
         plLocomotion.AllMovement();
+    }
+    private void LateUpdate()
+    {
+        isInteract = animator.GetBool("isInteracting");
     }
 }

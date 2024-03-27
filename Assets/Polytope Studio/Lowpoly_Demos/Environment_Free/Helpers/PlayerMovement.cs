@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            Debug.Log("no");
+
 
             playerLocomotion.isCroaching = false;
         }

@@ -4,20 +4,35 @@ using UnityEngine;
 
 public class PlLocomotion : MonoBehaviour
 {
+    PlayerManager plManager;
+    AnimarionManager animatorManager;
     PlayerMovement inputManager;
     Vector3 moveDir;
     Transform cameraObject;
     Rigidbody plRigidBody;
     private Animator _animator;
 
+    [Header("Falling")]
+    public float inAirTimer;
+    public float leapingVelocity;
+    public float fallingSpeed;
+    public float rayCastHeightOffset = 0.5f;
+    public LayerMask groundLayer;
+    public float maxDistance = 1;
+    [Header("Movement Flags")]
     public bool isSprinting;
     public bool isCroaching;
+    public bool isGrounded;
+
+    [Header("Speeds")]
     public float walkinSpeed = 3.5f;
     public float speed = 5;
     public float sprintSpeed = 7.5f;
     public float rotationSpeed = 10;
     private void Awake()
     {
+        plManager = GetComponent<PlayerManager>();
+        animatorManager = GetComponent<AnimarionManager>();
         inputManager = GetComponent<PlayerMovement>();
         plRigidBody = GetComponent<Rigidbody>();
         cameraObject = Camera.main.transform;
@@ -27,6 +42,10 @@ public class PlLocomotion : MonoBehaviour
 
     public void AllMovement()
     {
+        FallingAndLanding();
+        //if (plManager.isInteract)
+        //    return;
+
         Movement();
         Rotation();
     }
@@ -83,5 +102,39 @@ public class PlLocomotion : MonoBehaviour
         //Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         //transform.rotation = playerRotation;
+    }
+
+    private void FallingAndLanding()
+    {
+        RaycastHit hit;
+        Vector3 rCastOrigin = transform.position;
+        rCastOrigin.y = rCastOrigin.y + rayCastHeightOffset;
+        if (!isGrounded)
+        {
+            if (!plManager.isInteract)
+            {
+                animatorManager.PlayTargetAnimation("fall", true);
+            }
+            inAirTimer = inAirTimer + Time.deltaTime;
+            plRigidBody.AddForce(transform.forward * leapingVelocity);
+            plRigidBody.AddForce(-Vector3.up * fallingSpeed * inAirTimer);
+        }
+
+        if (Physics.SphereCast(rCastOrigin, 0.9f, -Vector3.up, out hit,maxDistance, groundLayer))
+        {
+            Debug.Log("hola");
+            if (!isGrounded && !plManager.isInteract)
+            {
+                Debug.Log("adios");
+
+                animatorManager.PlayTargetAnimation("land", true);
+            }
+            inAirTimer = 0;
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
     }
 }
