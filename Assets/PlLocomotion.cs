@@ -23,12 +23,17 @@ public class PlLocomotion : MonoBehaviour
     public bool isSprinting;
     public bool isCroaching;
     public bool isGrounded;
+    public bool isJumping;
 
     [Header("Speeds")]
     public float walkinSpeed = 3.5f;
     public float speed = 5;
     public float sprintSpeed = 7.5f;
     public float rotationSpeed = 10;
+
+    [Header("Jumpin Speeds")]
+    public float gravityIntensity = -15f;
+    public float jumpHeight = 3;
     private void Awake()
     {
         plManager = GetComponent<PlayerManager>();
@@ -82,6 +87,8 @@ public class PlLocomotion : MonoBehaviour
 
     private void Rotation()
     {
+        //if (isJumping)
+        //    return;
         if (!_animator.GetBool("IsDancing"))
         {
             transform.rotation = Quaternion.Euler(0f, cameraObject.eulerAngles.y, 0f);
@@ -109,7 +116,7 @@ public class PlLocomotion : MonoBehaviour
         RaycastHit hit;
         Vector3 rCastOrigin = transform.position;
         rCastOrigin.y = rCastOrigin.y + rayCastHeightOffset;
-        if (!isGrounded)
+        if (!isGrounded && !isJumping)
         {
             if (!plManager.isInteract)
             {
@@ -135,6 +142,19 @@ public class PlLocomotion : MonoBehaviour
         else
         {
             isGrounded = false;
+        }
+    }
+    public void Jump()
+    {
+        if (isGrounded)
+        {
+            animatorManager.animator.SetBool("IsJumping", true);
+            animatorManager.PlayTargetAnimation("jump", false);
+
+            float jumpVelocity = Mathf.Sqrt(-2 * gravityIntensity * jumpHeight);
+            Vector3 playerVelocity = moveDir;
+            playerVelocity.y= jumpVelocity;
+            plRigidBody.velocity = playerVelocity;
         }
     }
 }
