@@ -151,7 +151,7 @@ public class PlLocomotion : MonoBehaviour
             animatorManager.animator.SetBool("IsJumping", true);
             animatorManager.PlayTargetAnimation("jump", false);
 
-            float jumpVelocity = Mathf.Sqrt(-2 * gravityIntensity * jumpHeight);
+            float jumpVelocity = Mathf.Sqrt(-1.12f * gravityIntensity * jumpHeight);
             Vector3 playerVelocity = moveDir;
             playerVelocity.y= jumpVelocity;
             plRigidBody.velocity = playerVelocity;
