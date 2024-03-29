@@ -16,4 +16,4 @@ Rclick-->Atacar
 
 1-bailar
 
-Espacio--> Saltar
+Espacio--> Saltar.
