@@ -24,6 +24,7 @@ public class PlLocomotion : MonoBehaviour
     public bool isCroaching;
     public bool isGrounded;
     public bool isJumping;
+    public bool isAttack;
 
     [Header("Speeds")]
     public float walkinSpeed = 3.5f;
@@ -156,5 +157,21 @@ public class PlLocomotion : MonoBehaviour
             playerVelocity.y= jumpVelocity;
             plRigidBody.velocity = playerVelocity;
         }
+    }
+    public void Attack()
+    {
+        if (isGrounded) 
+        {
+            animatorManager.animator.SetBool("IsAttack", true);
+            animatorManager.PlayTargetAnimation("attack", false);
+        }
+    }
+    public void Block()
+    {
+        if (isGrounded)
+        {
+            animatorManager.animator.SetBool("IsBlock", true);
+            animatorManager.PlayTargetAnimation("block", false);
+        }     
     }
 }

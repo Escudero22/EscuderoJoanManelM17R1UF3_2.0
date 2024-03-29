@@ -24,34 +24,6 @@ public partial class @Map: IInputActionCollection2, IDisposable
     ""name"": ""Map"",
     ""maps"": [
         {
-            ""name"": ""Battle"",
-            ""id"": ""0a656048-27a4-40c2-a00f-50bbc5614499"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""9a6c9a51-b02e-4ca3-a368-e0c6a1bc4bd1"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""8402391d-52f3-476f-9027-948669b8ca14"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
             ""name"": ""Exploration"",
             ""id"": ""d1f99973-17bb-48de-9936-85fe0522f838"",
             ""actions"": [
@@ -261,6 +233,24 @@ public partial class @Map: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""A"",
+                    ""type"": ""Button"",
+                    ""id"": ""65dbc0d0-d0f7-447a-bda9-ecd4cb06eb58"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Block"",
+                    ""type"": ""Button"",
+                    ""id"": ""3ad5ae46-4bea-4a34-9682-ce8e0ad2e2de"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -285,15 +275,34 @@ public partial class @Map: IInputActionCollection2, IDisposable
                     ""action"": ""C"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a9c74b0-8777-46ab-a71f-21f24a6e67aa"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""A"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c5537fd-e00d-46b9-90f1-0a6f59dd3421"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // Battle
-        m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
-        m_Battle_Newaction = m_Battle.FindAction("New action", throwIfNotFound: true);
         // Exploration
         m_Exploration = asset.FindActionMap("Exploration", throwIfNotFound: true);
         m_Exploration_Move = m_Exploration.FindAction("Move", throwIfNotFound: true);
@@ -303,6 +312,8 @@ public partial class @Map: IInputActionCollection2, IDisposable
         m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
         m_PlayerActions_B = m_PlayerActions.FindAction("B", throwIfNotFound: true);
         m_PlayerActions_C = m_PlayerActions.FindAction("C", throwIfNotFound: true);
+        m_PlayerActions_A = m_PlayerActions.FindAction("A", throwIfNotFound: true);
+        m_PlayerActions_Block = m_PlayerActions.FindAction("Block", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -360,52 +371,6 @@ public partial class @Map: IInputActionCollection2, IDisposable
     {
         return asset.FindBinding(bindingMask, out action);
     }
-
-    // Battle
-    private readonly InputActionMap m_Battle;
-    private List<IBattleActions> m_BattleActionsCallbackInterfaces = new List<IBattleActions>();
-    private readonly InputAction m_Battle_Newaction;
-    public struct BattleActions
-    {
-        private @Map m_Wrapper;
-        public BattleActions(@Map wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Battle_Newaction;
-        public InputActionMap Get() { return m_Wrapper.m_Battle; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(BattleActions set) { return set.Get(); }
-        public void AddCallbacks(IBattleActions instance)
-        {
-            if (instance == null || m_Wrapper.m_BattleActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_BattleActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
-        }
-
-        private void UnregisterCallbacks(IBattleActions instance)
-        {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
-        }
-
-        public void RemoveCallbacks(IBattleActions instance)
-        {
-            if (m_Wrapper.m_BattleActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IBattleActions instance)
-        {
-            foreach (var item in m_Wrapper.m_BattleActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_BattleActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public BattleActions @Battle => new BattleActions(this);
 
     // Exploration
     private readonly InputActionMap m_Exploration;
@@ -474,12 +439,16 @@ public partial class @Map: IInputActionCollection2, IDisposable
     private List<IPlayerActionsActions> m_PlayerActionsActionsCallbackInterfaces = new List<IPlayerActionsActions>();
     private readonly InputAction m_PlayerActions_B;
     private readonly InputAction m_PlayerActions_C;
+    private readonly InputAction m_PlayerActions_A;
+    private readonly InputAction m_PlayerActions_Block;
     public struct PlayerActionsActions
     {
         private @Map m_Wrapper;
         public PlayerActionsActions(@Map wrapper) { m_Wrapper = wrapper; }
         public InputAction @B => m_Wrapper.m_PlayerActions_B;
         public InputAction @C => m_Wrapper.m_PlayerActions_C;
+        public InputAction @A => m_Wrapper.m_PlayerActions_A;
+        public InputAction @Block => m_Wrapper.m_PlayerActions_Block;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -495,6 +464,12 @@ public partial class @Map: IInputActionCollection2, IDisposable
             @C.started += instance.OnC;
             @C.performed += instance.OnC;
             @C.canceled += instance.OnC;
+            @A.started += instance.OnA;
+            @A.performed += instance.OnA;
+            @A.canceled += instance.OnA;
+            @Block.started += instance.OnBlock;
+            @Block.performed += instance.OnBlock;
+            @Block.canceled += instance.OnBlock;
         }
 
         private void UnregisterCallbacks(IPlayerActionsActions instance)
@@ -505,6 +480,12 @@ public partial class @Map: IInputActionCollection2, IDisposable
             @C.started -= instance.OnC;
             @C.performed -= instance.OnC;
             @C.canceled -= instance.OnC;
+            @A.started -= instance.OnA;
+            @A.performed -= instance.OnA;
+            @A.canceled -= instance.OnA;
+            @Block.started -= instance.OnBlock;
+            @Block.performed -= instance.OnBlock;
+            @Block.canceled -= instance.OnBlock;
         }
 
         public void RemoveCallbacks(IPlayerActionsActions instance)
@@ -522,10 +503,6 @@ public partial class @Map: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
-    public interface IBattleActions
-    {
-        void OnNewaction(InputAction.CallbackContext context);
-    }
     public interface IExplorationActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -536,5 +513,7 @@ public partial class @Map: IInputActionCollection2, IDisposable
     {
         void OnB(InputAction.CallbackContext context);
         void OnC(InputAction.CallbackContext context);
+        void OnA(InputAction.CallbackContext context);
+        void OnBlock(InputAction.CallbackContext context);
     }
 }

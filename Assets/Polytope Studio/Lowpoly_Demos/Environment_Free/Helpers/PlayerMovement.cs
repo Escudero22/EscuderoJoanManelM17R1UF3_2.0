@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     public bool b_input;
     public bool c_input;
     public bool j_input;
+    public bool a_input;
+    public bool block_input;
     private void Awake()
     {
         animationManager = GetComponent<AnimarionManager>();
@@ -33,9 +35,14 @@ public class PlayerMovement : MonoBehaviour
             map.PlayerActions.B.performed += i => b_input = true;
             map.PlayerActions.C.performed += i => c_input = true;
             map.Exploration.Jump.performed += i => j_input = true;
+            map.PlayerActions.A.performed += i => a_input = true;
+            map.PlayerActions.Block.performed += i => block_input = true;
             map.PlayerActions.B.canceled += i => b_input = false;
             map.PlayerActions.C.canceled += i => c_input = false;
             map.Exploration.Jump.canceled += i => j_input = false;
+            map.PlayerActions.A.canceled += i => a_input = false;
+            map.PlayerActions.Block.canceled += i => block_input = false;
+
 
         }
         map.Enable();
@@ -57,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         SprintingInput();
         CroachingInput();
         JumpingAction();
-        //ActionInputAction
+        ActionInputAction();
     }
     private void MovementInput()
     {
@@ -97,6 +104,19 @@ public class PlayerMovement : MonoBehaviour
         {
             j_input=false;
             playerLocomotion.Jump();
+        }
+    }
+    private void ActionInputAction()
+    {
+        if (a_input)
+        {
+            j_input = false;
+            playerLocomotion.Attack();
+        }
+        if (block_input)
+        {
+            block_input = false;
+            playerLocomotion.Block();
         }
     }
 }
