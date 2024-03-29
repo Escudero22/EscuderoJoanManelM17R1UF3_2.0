@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     public bool a_input;
     public bool block_input;
     public bool dance_input;
+    public AudioSource attackSound; // Referencia al AudioSource que reproducirá el sonido de ataque
+
     private void Awake()
     {
         animationManager = GetComponent<AnimarionManager>();
@@ -118,6 +120,11 @@ public class PlayerMovement : MonoBehaviour
         {
             j_input = false;
             playerLocomotion.Attack();
+            // Si hay un AudioSource y tiene un clip de sonido, reproducir el sonido de ataque
+            if (attackSound != null && attackSound.clip != null && !j_input)
+            {
+                attackSound.Play();
+            }
         }
         if (block_input)
         {
