@@ -88,11 +88,13 @@ public class PlLocomotion : MonoBehaviour
 
     private void Rotation()
     {
+
         //if (isJumping)
         //    return;
         if (!_animator.GetBool("IsDancing"))
         {
             transform.rotation = Quaternion.Euler(0f, cameraObject.eulerAngles.y, 0f);
+
         }
 
 
@@ -174,4 +176,5 @@ public class PlLocomotion : MonoBehaviour
             animatorManager.PlayTargetAnimation("block", false);
         }     
     }
+
 }

@@ -14,12 +14,14 @@ public class PlayerMovement : MonoBehaviour
 
     public float verticalI;
     public float horizontalI;
+    private bool isDancing = false;
 
     public bool b_input;
     public bool c_input;
     public bool j_input;
     public bool a_input;
     public bool block_input;
+    public bool dance_input;
     private void Awake()
     {
         animationManager = GetComponent<AnimarionManager>();
@@ -36,12 +38,15 @@ public class PlayerMovement : MonoBehaviour
             map.PlayerActions.C.performed += i => c_input = true;
             map.Exploration.Jump.performed += i => j_input = true;
             map.PlayerActions.A.performed += i => a_input = true;
+            map.Exploration.Dance.performed += i => dance_input = true;
             map.PlayerActions.Block.performed += i => block_input = true;
             map.PlayerActions.B.canceled += i => b_input = false;
             map.PlayerActions.C.canceled += i => c_input = false;
             map.Exploration.Jump.canceled += i => j_input = false;
             map.PlayerActions.A.canceled += i => a_input = false;
             map.PlayerActions.Block.canceled += i => block_input = false;
+            map.Exploration.Dance.canceled += i => dance_input = false;
+
 
 
         }
@@ -65,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         CroachingInput();
         JumpingAction();
         ActionInputAction();
+        Dance();
     }
     private void MovementInput()
     {
@@ -119,6 +125,30 @@ public class PlayerMovement : MonoBehaviour
             playerLocomotion.Block();
         }
     }
+
+    private void Dance()
+    {
+        if (dance_input && !isDancing)
+        {
+            isDancing = true;
+            animationManager.animator.SetBool("IsDancing", true);
+            animationManager.PlayTargetAnimation("dance", dance_input);
+        }
+
+        if (isDancing)
+        {
+            // Obtenemos el nombre de la animación actual
+            string currentAnimation = animationManager.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+
+            // Si el nombre de la animación actual no es "Dance", significa que ha terminado
+            if (currentAnimation != "dance")
+            {
+                isDancing = false;
+                animationManager.animator.SetBool("IsDancing", false);
+            }
+        }
+    }
+
 }
 
 //[SerializeField] private Rigidbody _rb;
