@@ -353,7 +353,7 @@ Terrain:
   m_HeightmapMaximumLOD: 0
   m_ShadowCastingMode: 2
   m_DrawHeightmap: 1
-  m_DrawInstanced: 0
+  m_DrawInstanced: 1
   m_DrawTreesAndFoliage: 0
   m_StaticShadowCaster: 0
   m_IgnoreQualitySettings: 0
@@ -9367,6 +9367,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 221843412109991933, guid: 9559f53b40328244fb3fe37c9108c31f, type: 3}
+      propertyPath: m_TerrainData
+      value: 
+      objectReference: {fileID: 15600000, guid: f8fdfa2ca014d1146aa3995becae6b28, type: 2}
+    - target: {fileID: 221843412109991933, guid: 9559f53b40328244fb3fe37c9108c31f, type: 3}
+      propertyPath: m_DrawInstanced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 221843412109991933, guid: 9559f53b40328244fb3fe37c9108c31f, type: 3}
       propertyPath: m_DrawTreesAndFoliage
       value: 0
       objectReference: {fileID: 0}
@@ -9374,6 +9382,10 @@ PrefabInstance:
       propertyPath: m_DrawTreesAndFoliage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1311150665255627417, guid: 9559f53b40328244fb3fe37c9108c31f, type: 3}
+      propertyPath: m_TerrainData
+      value: 
+      objectReference: {fileID: 15600000, guid: f8fdfa2ca014d1146aa3995becae6b28, type: 2}
     - target: {fileID: 1382924051213255433, guid: 9559f53b40328244fb3fe37c9108c31f, type: 3}
       propertyPath: m_DrawTreesAndFoliage
       value: 0
@@ -9385,6 +9397,14 @@ PrefabInstance:
     - target: {fileID: 3838514312584442167, guid: 9559f53b40328244fb3fe37c9108c31f, type: 3}
       propertyPath: m_DrawTreesAndFoliage
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5136183102341439795, guid: 9559f53b40328244fb3fe37c9108c31f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5136183102341439795, guid: 9559f53b40328244fb3fe37c9108c31f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 26.8
       objectReference: {fileID: 0}
     - target: {fileID: 5650841540783649865, guid: 9559f53b40328244fb3fe37c9108c31f, type: 3}
       propertyPath: m_DrawHeightmap
@@ -9448,6 +9468,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7325674061734488733, guid: 9559f53b40328244fb3fe37c9108c31f, type: 3}
       propertyPath: m_DrawTreesAndFoliage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351617002942063429, guid: 9559f53b40328244fb3fe37c9108c31f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351617002942063429, guid: 9559f53b40328244fb3fe37c9108c31f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351617002942063429, guid: 9559f53b40328244fb3fe37c9108c31f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 7.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351617002942063429, guid: 9559f53b40328244fb3fe37c9108c31f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 26.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351617002942063429, guid: 9559f53b40328244fb3fe37c9108c31f, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10267,7 +10307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6567582054762544328, guid: 1c863258509c65743bc98138e8497c16, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000019073486
+      value: -0.000022888184
       objectReference: {fileID: 0}
     - target: {fileID: 6567582054762544328, guid: 1c863258509c65743bc98138e8497c16, type: 3}
       propertyPath: m_LocalPosition.z
