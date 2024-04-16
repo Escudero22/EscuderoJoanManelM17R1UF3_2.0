@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 [CreateAssetMenu(fileName = "ScriptableFollow", menuName = "ScriptableObjects2/ScriptableAction/ScriptableFollow")]
 
 public class ScriptableFollow : ScriptableAction
 {
     private ChaseBehaviour _chaseBehaviour;
     private EnemyController2 _enemyController;
+    private NavMeshAgent agent;
+
     public override void OnFinishedState()
     {
         _chaseBehaviour.StopChasing();
@@ -22,6 +26,8 @@ public class ScriptableFollow : ScriptableAction
 
     public override void OnUpdate()
     {
-        _chaseBehaviour.Chase(_enemyController.target.transform, sc.transform);
+        //_chaseBehaviour.Chase(_enemyController.target.transform, sc.transform);
+        agent = sc.GetComponent<NavMeshAgent>();
+        agent.destination = _enemyController.target.transform.position;
     }
 }

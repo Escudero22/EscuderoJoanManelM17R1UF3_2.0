@@ -24,11 +24,11 @@ public class EnemyController2 : StateController
         HP -= damage;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         target = collision.gameObject;
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit(Collider collision)
     {
         target = null;
     }
