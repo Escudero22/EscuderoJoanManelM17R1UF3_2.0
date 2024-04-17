@@ -5,10 +5,10 @@ using UnityEngine;
 public class ChaseBehaviour : MonoBehaviour
 {
     public float Speed;
-    private Rigidbody2D _rb;
+    private Rigidbody _rb;
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody>();
     }
     public void Chase(Transform target, Transform self)
     {

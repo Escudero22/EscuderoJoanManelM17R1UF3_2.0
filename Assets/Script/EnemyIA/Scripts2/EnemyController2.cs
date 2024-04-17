@@ -11,7 +11,11 @@ public class EnemyController2 : StateController
     void Update()
     {
         StateTransition();
-        if(currentState.action!=null)   currentState.action.OnUpdate();
+        if (currentState.action != null)
+        {
+            currentState.action.OnUpdate();
+            Debug.Log(currentState.action);
+        }
         if (Input.GetKey("space") && Time.time >= nextHurt)
         {
             OnHurt(1);
@@ -26,7 +30,12 @@ public class EnemyController2 : StateController
 
     private void OnTriggerEnter(Collider collision)
     {
-        target = collision.gameObject;
+        if (collision.gameObject.CompareTag
+            ("Player"))
+        {
+            target = collision.gameObject;
+
+        }
     }
     private void OnTriggerExit(Collider collision)
     {
