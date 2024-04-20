@@ -5,7 +5,7 @@ using UnityEngine;
 public class StateController : MonoBehaviour
 {
     public NodeBehaviourTree currentState;
-    public GameObject target = null;
+    public GameObject target;
     //protected NodeBehaviourTree stateToPlay = null;
     public void StateTransition()
     {

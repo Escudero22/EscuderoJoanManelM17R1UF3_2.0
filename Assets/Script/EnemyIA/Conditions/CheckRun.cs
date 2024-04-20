@@ -8,7 +8,7 @@ public class CheckRun : ScriptableCondition
     public override bool Check(StateController sc)
     { 
         var ec = (EnemyController2)sc;
-        return ec.HP < 3;
+        return ec.HP < 33;
     }
 }
 

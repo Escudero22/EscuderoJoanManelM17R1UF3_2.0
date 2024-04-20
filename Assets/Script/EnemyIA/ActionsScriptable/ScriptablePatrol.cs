@@ -32,7 +32,7 @@ public class ScriptablePatrol : ScriptableAction
         SetRandomDestination(); // Establecer el primer destino aleatorio
         isPatrolling = true;
         animator = sc.GetComponent<Animator>();
-        animator.Play("Movement");
+        animator.Play("Walk");
     }
 
     public override void OnUpdate()

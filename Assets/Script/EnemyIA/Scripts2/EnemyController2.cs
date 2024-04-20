@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController2 : StateController
+public class EnemyController2 : StateController, IDamageable
 {
     public float AttackDistance;
     public float HP;
@@ -18,7 +18,7 @@ public class EnemyController2 : StateController
         }
         if (Input.GetKey("space") && Time.time >= nextHurt)
         {
-            OnHurt(1);
+            OnHurt(10);
             nextHurt = Time.time + 0.3f;
         }
     }
@@ -30,8 +30,7 @@ public class EnemyController2 : StateController
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag
-            ("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             target = collision.gameObject;
 
@@ -39,6 +38,10 @@ public class EnemyController2 : StateController
     }
     private void OnTriggerExit(Collider collision)
     {
-        target = null;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            target = null;
+
+        }
     }
 }

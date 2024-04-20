@@ -10,7 +10,7 @@ public class ScriptableRun : ScriptableAction
     
     public override void OnFinishedState()
     {
-        _chaseBehaviour.StopChasing();
+        //_chaseBehaviour.StopChasing();
     }
 
     public override void OnSetState(StateController sc)

@@ -14,7 +14,7 @@ public class ScriptableAttack : ScriptableAction
     {
         base.OnSetState(sc);
         animator = sc.GetComponent<Animator>();
-        animator.Play("Walk");
+        animator.Play("Attack");
         // GameManager.gm.UpdateText("a q te meto");
     }
 
