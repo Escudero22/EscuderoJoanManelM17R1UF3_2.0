@@ -13,7 +13,9 @@ public class ScriptableAttack : ScriptableAction
     public override void OnSetState(StateController sc)
     {
         base.OnSetState(sc);
-       // GameManager.gm.UpdateText("a q te meto");
+        animator = sc.GetComponent<Animator>();
+        animator.Play("Walk");
+        // GameManager.gm.UpdateText("a q te meto");
     }
 
     public override void OnUpdate()

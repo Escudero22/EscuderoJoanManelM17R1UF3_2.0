@@ -22,6 +22,8 @@ public class ScriptableFollow : ScriptableAction
         //GameManager.gm.UpdateText("Te persigo");
         _chaseBehaviour = sc.GetComponent<ChaseBehaviour>();
         _enemyController = (EnemyController2)sc;
+        animator = sc.GetComponent<Animator>();
+        animator.Play("Walk");
     }
 
     public override void OnUpdate()

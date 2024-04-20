@@ -7,6 +7,7 @@ public class ScriptableRun : ScriptableAction
 {
     private ChaseBehaviour _chaseBehaviour;
     private EnemyController2 _enemyController;
+    
     public override void OnFinishedState()
     {
         _chaseBehaviour.StopChasing();
@@ -18,6 +19,8 @@ public class ScriptableRun : ScriptableAction
         //GameManager.gm.UpdateText("estoy huyendo");
         _chaseBehaviour = sc.GetComponent<ChaseBehaviour>();
         _enemyController = (EnemyController2)sc;
+        animator = sc.GetComponent<Animator>();
+        animator.Play("Run");
     }
 
     public override void OnUpdate()

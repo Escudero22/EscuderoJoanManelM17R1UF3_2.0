@@ -31,6 +31,8 @@ public class ScriptablePatrol : ScriptableAction
         agent = sc.GetComponent<NavMeshAgent>();
         SetRandomDestination(); // Establecer el primer destino aleatorio
         isPatrolling = true;
+        animator = sc.GetComponent<Animator>();
+        animator.Play("Movement");
     }
 
     public override void OnUpdate()
