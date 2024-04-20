@@ -166,6 +166,11 @@ public class PlLocomotion : MonoBehaviour
         {
             animatorManager.animator.SetBool("IsAttack", true);
             animatorManager.PlayTargetAnimation("attack", false);
+            var temp = plManager.Enemy.GetComponent<EnemyController2>() as IDamageable;
+            if (temp != null)
+            {
+                temp.OnHurt(10);
+            }
         }
     }
     public void Block()

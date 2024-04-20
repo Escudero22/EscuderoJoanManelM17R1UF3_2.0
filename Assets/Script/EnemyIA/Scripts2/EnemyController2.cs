@@ -16,11 +16,11 @@ public class EnemyController2 : StateController, IDamageable
             currentState.action.OnUpdate();
             Debug.Log(currentState.action);
         }
-        if (Input.GetKey("space") && Time.time >= nextHurt)
+        /*if (Input.GetKey("space") && Time.time >= nextHurt)
         {
             OnHurt(10);
             nextHurt = Time.time + 0.3f;
-        }
+        }*/
     }
 
     public void OnHurt(float damage)

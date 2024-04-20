@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
     Animator animator;
     PlayerMovement inputManager;
     PlLocomotion plLocomotion;
+    public GameObject Enemy;
 
     public bool isInteract;
 
@@ -31,5 +32,23 @@ public class PlayerManager : MonoBehaviour
         animator.SetBool("IsGrounded",plLocomotion.isGrounded);
         animator.SetBool("IsAttack",inputManager.a_input);
         animator.SetBool("IsBlock",inputManager.block_input);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.gameObject.CompareTag("enemy"))
+        {
+            Enemy = other.gameObject;
+
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+
+        if (other.gameObject.CompareTag("enemy"))
+        {
+            Enemy = other.gameObject;
+
+        }
     }
 }
