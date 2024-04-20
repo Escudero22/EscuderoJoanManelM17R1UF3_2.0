@@ -8,7 +8,7 @@ public class CheckFollowDistance : ScriptableCondition
     {
         var ec = (EnemyController2)sc;
         try { 
-            return (sc.target.transform.position - sc.transform.position).magnitude > ec.AttackDistance;
+            return (sc.target.transform.position - sc.transform.position).magnitude > ec.AttackDistance -0.1f;
         }
         catch
         {
