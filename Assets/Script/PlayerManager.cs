@@ -52,6 +52,13 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
         }
     }
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.CompareTag("enemy"))
+        {
+            OnHurt(6);
+        }
+    }
     private void OnTriggerExit(Collider other)
     {
 
