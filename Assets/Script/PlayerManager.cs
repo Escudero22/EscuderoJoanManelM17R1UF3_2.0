@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour, IDamageable
 {
     Animator animator;
     PlayerMovement inputManager;
     PlLocomotion plLocomotion;
     public GameObject Enemy;
+    public float maxHP;
+    public float HP;
+    public Image life;
 
     public bool isInteract;
 
@@ -20,6 +25,11 @@ public class PlayerManager : MonoBehaviour
     private void Update()
     {
         inputManager.HandleAllInputs();
+        life.fillAmount = HP / maxHP;
+        if (HP < 0)
+        {
+            SceneManager.LoadScene(1);
+        }
     }
     private void FixedUpdate()
     {
@@ -50,5 +60,10 @@ public class PlayerManager : MonoBehaviour
             Enemy = other.gameObject;
 
         }
+    }
+
+    public void OnHurt(float damage)
+    {
+        HP-= damage;
     }
 }

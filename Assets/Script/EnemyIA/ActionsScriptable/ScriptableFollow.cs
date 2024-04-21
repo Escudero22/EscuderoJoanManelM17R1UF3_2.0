@@ -24,7 +24,11 @@ public class ScriptableFollow : ScriptableAction
         //_chaseBehaviour = sc.GetComponent<ChaseBehaviour>();
         _enemyController = (EnemyController2)sc;
         animator = sc.GetComponent<Animator>();
-        
+        var temp = sc.gameObject.GetComponent<EnemyController2>();
+        if (temp != null)
+        {
+            temp.PlaySFX("A");
+        }
     }
 
     public override void OnUpdate()

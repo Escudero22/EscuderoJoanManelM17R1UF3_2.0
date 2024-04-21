@@ -12,6 +12,8 @@ public class PlLocomotion : MonoBehaviour
     Rigidbody plRigidBody;
     private Animator _animator;
 
+    public GameObject sword;
+
     [Header("Falling")]
     public float inAirTimer;
     public float leapingVelocity;
@@ -167,9 +169,9 @@ public class PlLocomotion : MonoBehaviour
             animatorManager.animator.SetBool("IsAttack", true);
             animatorManager.PlayTargetAnimation("attack", false);
             var temp = plManager.Enemy.GetComponent<EnemyController2>() as IDamageable;
-            if (temp != null)
+            if (temp != null && sword.activeInHierarchy)
             {
-                temp.OnHurt(10);
+                temp.OnHurt(1);
             }
         }
     }

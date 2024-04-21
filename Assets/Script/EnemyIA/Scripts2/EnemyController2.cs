@@ -7,6 +7,9 @@ public class EnemyController2 : StateController, IDamageable
     public float AttackDistance;
     public float HP;
     private float nextHurt = 0;
+    public AudioSource audioSource;
+    public AudioClip enemyA;
+    public AudioClip enemyDeath;
 
     void Update()
     {
@@ -22,7 +25,16 @@ public class EnemyController2 : StateController, IDamageable
             nextHurt = Time.time + 0.3f;
         }*/
     }
-
+    public void PlaySFX(string action)
+    {
+        switch(action.ToUpper())
+        {
+            case "DEATH":
+                audioSource.PlayOneShot(enemyDeath); break;
+            case "A":
+                audioSource.PlayOneShot(enemyA); break;
+        }
+    }
     public void OnHurt(float damage)
     {
         HP -= damage;

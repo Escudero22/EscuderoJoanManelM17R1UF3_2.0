@@ -12,6 +12,7 @@ public class ScriptableDie : ScriptableAction
     public override void OnFinishedState()
     {
         //GameManager.gm.UpdateText("me mori");
+        
     }
 
     public override void OnSetState(StateController sc)
@@ -20,6 +21,11 @@ public class ScriptableDie : ScriptableAction
         animator = sc.GetComponent<Animator>();
         enemy = sc.transform;
         animator.Play("Die");
+        var temp = sc.gameObject.GetComponent<EnemyController2>();
+        if (temp != null)
+        {
+            temp.PlaySFX("Death");
+        }
         //GameManager.gm.UpdateText("me estoy muriendo");
     }
 
