@@ -16,7 +16,11 @@ public class GiveWeapons : MonoBehaviour, IArmas
     }
     public void OnTriggerEnter(Collider col)
     {
-        weaponsInCharacter.SetActive(true);
-        weaponsCollectible.SetActive(false);
+        if (col.gameObject.CompareTag
+          ("Player"))
+        {
+            weaponsInCharacter.SetActive(true);
+            weaponsCollectible.SetActive(false);
+        }
     }
 }

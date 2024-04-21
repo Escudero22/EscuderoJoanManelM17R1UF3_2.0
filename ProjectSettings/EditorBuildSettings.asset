@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Juego.unity
     guid: 8b872ee04b21e1e4eadbda5b91b49fc0
+  - enabled: 1
+    path: Assets/Death.unity
+    guid: 43599b979ac7d6a48b0c59a45c13f187
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f3987a650f2bbf74ea105d96abc0e39c, type: 2}
